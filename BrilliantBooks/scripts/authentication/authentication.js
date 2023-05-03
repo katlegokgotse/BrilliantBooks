@@ -23,6 +23,10 @@ const analytics = getAnalytics(app);
 const auth = getAuth(app);
 
 import { getAuth,} from "firebase/auth";
+let userLoginEmailAddress = document.getElementById("userEmailAddress");
+let userLoginPassword = document.getElementById("userLoginPassword");
+
+createUserWithEmailAndPassword();
 
 createUserWithEmailAndPassword(auth, email, password)
   .then((userCredential) => {

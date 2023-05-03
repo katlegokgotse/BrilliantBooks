@@ -30,7 +30,7 @@
           <a class="nav-link" href="#">Cart</a>
         </li>
       </ul>
-      <button class="navbar-text bg-dark rounded-5 p-2 text-white">
+      <button id="signUpButton"class="navbar-text bg-dark rounded-5 p-2 text-white">
         Sign up
       </button>
     </div>

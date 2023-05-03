@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <title>Login | Brilliant Books</title>
 </head>
@@ -39,8 +39,12 @@
   <article>
     <div class="container">
       <div class="rightHandSide">
-        <form action="" method="post">
-          
+        <form action="authentication.php" method="get">
+          <input id="userLoginEmailAddress"type="email" name="userLoginEmailAddress" placeholder="Enter emailAddress">
+          <input id="userLoginPassword"type="password" name="userLoginPassword" placeholder="Enter Password">
+          <button type="submit" class="signInWithGoogle" id="signInWithGoogle">Sign up with Google</button>
+          <button type="submit" class="loginButton" id="loginButton">Login</button>
+          <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
         </form>
       </div>
       <div class="leftHandSide">
