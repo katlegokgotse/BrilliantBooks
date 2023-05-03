@@ -43,7 +43,7 @@
           <input id="userLoginEmailAddress"type="email" name="userLoginEmailAddress" placeholder="Enter emailAddress">
           <input id="userLoginPassword"type="password" name="userLoginPassword" placeholder="Enter Password">
           <button type="submit" class="signInWithGoogle" id="signInWithGoogle">Sign up with Google</button>
-          <button type="submit" class="loginButton" id="loginButton">Login</button>
+          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" id="loginButton" >Login</button>
           <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
         </form>
       </div>
