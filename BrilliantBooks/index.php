@@ -31,14 +31,38 @@
         </li>
       </ul>
       <button id="signUpButton"class="bg-dark rounded-5 p-2 text-white">
-        Sign up
+        <a href="pages/authentication/registration.php">
+          Sign up
+        </a>
+      </button>
+      <button id="signUpButton"class="bg-dark rounded-5 p-2 text-white">
+        <a href="pages/authentication/registration.php">
+          Sign in
+        </a>
       </button>
     </div>
     </div>
   </nav>
   <article>
-    <div class="container"></div>
+    <div class="container d-flex justify-content-center">
+      <div class="userPrompt bg-dark text-white rounded-1 w-25 p-2 m-2 d-flex justify-content-center">
+        Welcome, Katlego!
+      </div>
+    </div>
+    <div>
+
+    <div class="container d-flex justify-content-center">
+        <div class="rightHandSide d-flex align-items-center">
+          <p class="fs-1 fw-bold text-break">Find the BOOK you are looking for. Through our platform which allows you to buy, sell and trade books with fellow students</p>
+        </div>
+        <div class="leftHandSide">
+          <div class="lottieAnimation" id="lottieAnimation"></div>
+        </div>  
+    <div>
+
   </article>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script/animations/lottie_animations.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.11.0/lottie.min.js" integrity="sha512-XCthc/WzPfa+oa49Z3TI6MUK/zlqd67KwyRL9/R19z6uMqBNuv8iEnJ8FWHUFAjC6srr8w3FMZA91Tfn60T/9Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </body>
 </html>

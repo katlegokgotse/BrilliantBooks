@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/styles.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
-  <title>Login | Brilliant Books</title>
+  <title>Reset Password | Brilliant Books</title>
 </head>
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
@@ -37,14 +37,14 @@
     </div>
   </nav>
   <article>
-    <div class="container d-flex">
-      <div class="rightHandSide">
+    <div class="container">
+      <div class="rightHandSide d-flex flex-column">
         <form action="authentication.php" method="get">
-          <input id="userLoginEmailAddress"type="email" name="userLoginEmailAddress" placeholder="Enter emailAddress">
+          <input id="userLoginEmailAddress"type="email" name="userLoginEmailAddress" placeholder="Enter Email Address">
           <input id="userLoginPassword"type="password" name="userLoginPassword" placeholder="Enter Password">
           <button type="submit" class="signInWithGoogle rounded-5 text-black" id="signInWithGoogle">Sign up with Google</button>
           <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" id="loginButton" >Login</button>
-          <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
+          <button type="submit" class="forgetPassword bg-white" id="forgotPassword">Forgot password</button>
         </form>
       </div>
       <div class="leftHandSide">

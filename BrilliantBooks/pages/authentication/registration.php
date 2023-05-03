@@ -37,7 +37,20 @@
     </div>
   </nav>
   <article>
-    <div class="container"></div>
+    <div class="container">
+      <div class="rightHandSide">
+        <form action="authentication.php" method="get">
+          <input id="userLoginEmailAddress"type="email" name="userLoginEmailAddress" placeholder="Enter emailAddress">
+          <input id="userLoginPassword"type="password" name="userLoginPassword" placeholder="Enter Password">
+          <button type="submit" class="signInWithGoogle rounded-5 text-black" id="signInWithGoogle">Sign up with Google</button>
+          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" id="loginButton" >Login</button>
+          <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
+        </form>
+      </div>
+      <div class="leftHandSide">
+        <img src="" alt="">
+      </div>
+    </div>
   </article>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
