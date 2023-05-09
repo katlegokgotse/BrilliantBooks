@@ -46,7 +46,12 @@
       <div class="rightHandSide w-50 p-5">
         <h1 class="bold">WELCOME</h1>
         <form action="authentication.php" method="get" class="d-flex flex-column">
-          <button type="submit" class="signInWithGoogle my-2 btn btn-outline-dark" id="signInWithGoogle">Sign up with Google</button>
+          <!---<button type="submit" class="signInWithGoogle my-2 btn btn-outline-dark" id="signInWithGoogle">Sign up with Google</button> --->
+          <script src="https://accounts.google.com/gsi/client" async defer></script>
+          <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="true">
+          </div>
+          <div class="g_id_signin" data-type="standard" data-size="medium" data-theme="outline" data-text="sign_in_with" data-shape="rectangular" data-logo_alignment="left">
+          </div>
           <input id="userLoginEmailAddress" type="email" name="userLoginEmailAddress" placeholder="Enter email address" class="my-2">
           <input id="userLoginPassword" type="password" name="userLoginPassword" placeholder="Enter Password" class="my-2">
           <div class="buttons d-flex flex-column paddin">
