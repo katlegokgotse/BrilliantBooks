@@ -43,13 +43,19 @@
       <div class="rightHandSide">
         <form action="registration.php" method="post">
           <div class="form-group">
-            <input id="userRegistrationName" type="text" name="userRegistrationName" placeholder="Enter first name">
+            <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter Student number">
           </div>
           <div class="form-group">
-            <input id="userRegistrationSurname" type="text" name="userRegistrationSurname" placeholder="Enter last name">
+            <input id="universityEmailAddress" type="email" name="universityEmailAddress" placeholder="Enter student email Address">
           </div>
           <div class="form-group">
-            <input id="userRegistrationEmailAddress" type="email" name="userRegistrationEmailAddress" placeholder="Enter emailAddress">
+            <input id="universityName" type="text" name="universityName" placeholder="Enter your university">
+          </div>
+          <div class="form-group">
+            <input id="password" type="password" name="password" placeholder="Enter password">
+          </div>
+          <div class="form-group">
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
           </div>
           <div>
           </div>
@@ -67,15 +73,25 @@
   <?php
   //Recieving user input
   if (isset($_POST["submit"])) {
-    $name = $_POST["userRegistrationName"];
-    $surname = $_POST["userRegistrationSurname"];
-    $email = $_POST["userRegistrationEmailAddress"];
+    $studentNumber = $_POST["universityStudentNumber"];
+    $email = $_POST["universityEmailAddress"];
+    $password = $_POST["password"];
+    $confirmPassword = $_POST["confirmPassword"];
+
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
     $errors = [];
-    if (empty($name) or empty($surname) or empty($email)) {
+    if (empty($studentNumber) or empty($email) or empty($password)) {
       array_push($errors, "All fields are required");
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       array_push($errors, "Email address isn't valid");
+    }
+    if (strlen($password) < 8) {
+      array_push($errors, "Your password must be more or equal to 8 characters");
+    }
+    if ($password !== $confirmPassword) {
+      array_push($errors, "The passwords do not match");
     }
     if (count($errors) > 0) {
       foreach ($errors as $error) {
@@ -83,7 +99,7 @@
       }
     } else {
       //
-      require_once "../Conndb.php";
+      require_once "../../Conndb.php";
     }
   }
   ?>
