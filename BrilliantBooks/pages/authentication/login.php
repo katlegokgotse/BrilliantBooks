@@ -60,7 +60,7 @@
           </div>
         </form>
       </div>
-      <div class="leftHandSide w-50">
+      <div class="leftHandSide w-100">
         <img src="./../../images/images/login/login_picture.png" alt="this is a picture for decorating the login page" class="w-auto h-auto">
       </div>
     </div>

@@ -59,8 +59,7 @@
           </div>
           <div>
           </div>
-          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" name="submit" id="submit">Login</button>
-          <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
+          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" name="submit" id="submit">Register</button>
         </form>
       </div>
       <div class="leftHandSide">
@@ -77,6 +76,7 @@
     $email = $_POST["universityEmailAddress"];
     $password = $_POST["password"];
     $confirmPassword = $_POST["confirmPassword"];
+    $university = $_POST["universityName"];
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -100,6 +100,17 @@
     } else {
       //
       require_once "../../Conndb.php";
+      $sql = "INSERT INTO tblstudent (student_number, student_email, university, password) VALUES ($studentNumber, $email, $university, $password)";
+      $query = mysqli_query($conn, $sql);
+      $stmt = mysqli_stmt_init($conn);
+      $prepareStatement = mysqli_stmt_prepare($stmt, $sql);
+      if ($prepareStatement) {
+        mysqli_stmt_bind_param($stmt, "ssss",);
+        mysqli_stmt_execute($stmt);
+        print "<div class='alert alert-success'>You have been registered successfully</div>";
+      } else {
+        die("Something went wrong");
+      }
     }
   }
   ?>

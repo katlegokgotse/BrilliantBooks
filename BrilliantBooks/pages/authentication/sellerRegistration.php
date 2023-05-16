@@ -39,45 +39,55 @@
     </div>
   </nav>
   <article>
-    <div class="container p-5 bg-blue d-flex w-100 h-50 align-items-center justify-content-center">
-      <div class="rightHandSide w-50 p-2 m-auto">
-        <h1 class="text-align-center">Welcome to Brilliant Books</h1>
-        <form action="registration.php" method="post" class="p-2">
-          <div class="form-group m-2 p-2">
-            <input id="userRegistrationName" type="text" name="userRegistrationName" placeholder="Enter first name">
+    <div class="container p-5 bg-blue">
+      <div class="rightHandSide">
+        <form action="registration.php" method="post">
+          <div class="form-group">
+            <input id="sellerTitle" type="text" name="sellerTitle" placeholder="Enter the name of your distribution">
           </div>
-          <div class="form-group p-2 m-2">
-            <input id="userRegistrationSurname" type="text" name="userRegistrationSurname" placeholder="Enter last name">
+          <div class="form-group">
+            <input id="sellerEmail" type="email" name="sellerEmail" placeholder="Enter business email Address">
           </div>
-          <div class="form-group p-2 m-2">
-            <input id="userRegistrationEmailAddress" type="email" name="userRegistrationEmailAddress" placeholder="Enter emailAddress">
+          <div class="form-group">
+            <input id="sellerPassword" type="password" name="sellerPassword" placeholder="Enter password">
+          </div>
+          <div class="form-group">
+            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
           </div>
           <div>
           </div>
-          <button type="submit" class="loginButton bg-dark rounded-1 m-2 w-100 p-2 text-white" name="submit" id="submit">Register</button>
-          <button type="submit" class="forgetPassword btn btn-light w-100 m-2 p-2" name="currentUser" id="alreadyHaveAnAcc" onclick="goToLogin">Already have an account? Login</button>
+          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" name="submit" id="submit">Register</button>
         </form>
       </div>
       <div class="leftHandSide">
-        <img src="../../images//images//login//login_picture.png" alt="picture of login" class="w-max card-img-right">
+        <img src="" alt="">
       </div>
     </div>
   </article>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="./../../scripts//authentication//authentication.js"></script>
 
   <?php
   //Recieving user input
   if (isset($_POST["submit"])) {
-    $name = $_POST["userRegistrationName"];
-    $surname = $_POST["userRegistrationSurname"];
-    $email = $_POST["userRegistrationEmailAddress"];
+    $businessName = $_POST["sellerTitle"];
+    $businessEmail = $_POST["sellerEmail"];
+    $password = $_POST["sellerPassword"];
+    $confirmPassword = $_POST["confirmPassword"];
+
+    $passwordHash = password_hash($password, PASSWORD_DEFAULT);
+
     $errors = [];
-    if (empty($name) or empty($surname) or empty($email)) {
+    if (empty($businessName) or empty($businessEmail) or empty($password)) {
       array_push($errors, "All fields are required");
     }
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    if (!filter_var($businessEmail, FILTER_VALIDATE_EMAIL)) {
       array_push($errors, "Email address isn't valid");
+    }
+    if (strlen($password) < 8) {
+      array_push($errors, "Your password must be more or equal to 8 characters");
+    }
+    if ($password !== $confirmPassword) {
+      array_push($errors, "The passwords do not match");
     }
     if (count($errors) > 0) {
       foreach ($errors as $error) {
@@ -85,27 +95,20 @@
       }
     } else {
       //
-      require_once "../Conndb.php";
-      $sql = "INSERT INTO tbluser (first_name, last_name, email) VALUES ($name, $surname, $email)";
+      require_once "../../Conndb.php";
+      $sql = "INSERT INTO tblstudent (sellerTitle, sellerEmail, seller_password) VALUES ($businessName, $businessEmail, $passwor)";
       $stmt = mysqli_stmt_init($conn);
       $prepareStatement = mysqli_stmt_prepare($stmt, $sql);
       if ($prepareStatement) {
         mysqli_stmt_bind_param($stmt, "sss",);
         mysqli_stmt_execute($stmt);
         print "<div class='alert alert-success'>You have been registered successfully</div>";
-        header("studentRegistration.php");
       } else {
-        die("Something went wrong!");
+        die("Something went wrong");
       }
-    }
-    if (isset($_POST["currentUser"])) {
-      header("Location: <specialised_registration>studentRegistration.php");
     }
   }
   ?>
-  <footer class="bg-dark">
-
-  </footer>
 </body>
 
 </html>
