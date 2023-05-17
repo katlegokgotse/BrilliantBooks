@@ -1,3 +1,36 @@
+<?php
+//Recieving user input
+if (isset($_POST["submit"])) {
+  $password = $_POST["userLoginPassword"];
+  $email = $_POST["userLoginEmailAddress"];
+  $errors = [];
+  if (empty($name) or empty($surname) or empty($email)) {
+    array_push($errors, "All fields are required");
+  }
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    array_push($errors, "Email address isn't valid");
+  }
+  if (count($errors) > 0) {
+    foreach ($errors as $error) {
+      print "<div class='alert alert-danger'>$error</div>";
+    }
+  } else {
+    //
+    @include './../Conndb.php';
+    $sql = "SELECT * FROM tbluser, tblstudent WHERE student_email = '$email' && password = '$password'";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result)) {
+      print "<div class='alert alert-success'>You have been registered successfully</div>";
+      header("location:index.php");
+    } else {
+      print "<div alert alert-error>Som;ething went wrong!</div>";
+    }
+  }
+  if (isset($_POST["currentUser"])) {
+    header("Location: studentRegistration.php");
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -45,7 +78,7 @@
     <div class="container d-flex p-2 mw-100">
       <div class="rightHandSide w-50 p-5">
         <h1 class="bold">WELCOME</h1>
-        <form action="authentication.php" method="get" class="d-flex flex-column">
+        <form action="login.php" method="get" class="d-flex flex-column">
           <!---<button type="submit" class="signInWithGoogle my-2 btn btn-outline-dark" id="signInWithGoogle">Sign up with Google</button> --->
           <script src="https://accounts.google.com/gsi/client" async defer></script>
           <div id="g_id_onload" data-client_id="YOUR_GOOGLE_CLIENT_ID" data-login_uri="https://your.domain/your_login_endpoint" data-auto_prompt="true">
@@ -55,7 +88,7 @@
           <input id="userLoginEmailAddress" type="email" name="userLoginEmailAddress" placeholder="Enter email address" class="my-2">
           <input id="userLoginPassword" type="password" name="userLoginPassword" placeholder="Enter Password" class="my-2">
           <div class="buttons d-flex flex-column paddin">
-            <button type="submit" class="loginButton btn btn-dark my-2" id="loginButton">Login</button>
+            <button type="submit" class="loginButton btn btn-dark my-2" id="loginButton" name="submit">Login</button>
             <button type="submit" class="forgetPassword my-2 btn btn-outline-light text-black" id="forgotPassword">Forgot password</button>
           </div>
         </form>

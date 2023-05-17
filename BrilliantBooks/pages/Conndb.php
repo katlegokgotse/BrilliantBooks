@@ -5,6 +5,6 @@ $password = "";
 $dbName = "brilliantbookstore";
 $conn = mysqli_connect($hostname, $dbuser, $password, $dbName);
 
-if (!$conn) {
+if ($conn->connect_error) {
   die("Couldn't connect");
 }

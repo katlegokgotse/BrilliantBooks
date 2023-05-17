@@ -55,7 +55,7 @@
           <div>
           </div>
           <button type="submit" class="loginButton bg-dark rounded-1 m-2 w-100 p-2 text-white" name="submit" id="submit">Register</button>
-          <button type="submit" class="forgetPassword btn btn-light w-100 m-2 p-2" name="currentUser" id="alreadyHaveAnAcc" onclick="goToLogin">Already have an account? Login</button>
+          <button type="submit" class="forgetPassword btn btn-light w-100 m-2 p-2" name="currentUser" id="alreadyHaveAnAcc" onclick="goToLogin">Already have an account? <a href="./login.php">Login</a></button>
         </form>
       </div>
       <div class="leftHandSide">
@@ -85,21 +85,19 @@
       }
     } else {
       //
-      require_once "../Conndb.php";
-      $sql = "INSERT INTO tbluser (first_name, last_name, email) VALUES ($name, $surname, $email)";
-      $stmt = mysqli_stmt_init($conn);
-      $prepareStatement = mysqli_stmt_prepare($stmt, $sql);
-      if ($prepareStatement) {
-        mysqli_stmt_bind_param($stmt, "sss",);
-        mysqli_stmt_execute($stmt);
+      @include './../Conndb.php';
+      $sql = "INSERT INTO tbluser (first_name, last_name, email, user_type) VALUES ('$name', '$surname', '$email, 'user')";
+      $result = mysqli_query($conn, $sql);
+      $row = mysqli_fetch_array($result);
+      if ($conn->query($sql) == TRUE) {
         print "<div class='alert alert-success'>You have been registered successfully</div>";
-        header("studentRegistration.php");
+        header("location: ./studentRegistration.php");
       } else {
-        die("Something went wrong!");
+        print "<div alert alert-error>Som;ething went wrong!</div>";
       }
     }
     if (isset($_POST["currentUser"])) {
-      header("Location: <specialised_registration>studentRegistration.php");
+      header("Location: studentRegistration.php");
     }
   }
   ?>

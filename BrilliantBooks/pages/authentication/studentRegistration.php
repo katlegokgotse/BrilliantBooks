@@ -72,6 +72,7 @@
   <?php
   //Recieving user input
   if (isset($_POST["submit"])) {
+    @include './../Conndb.php';
     $studentNumber = $_POST["universityStudentNumber"];
     $email = $_POST["universityEmailAddress"];
     $password = $_POST["password"];
@@ -101,15 +102,11 @@
       //
       require_once "../../Conndb.php";
       $sql = "INSERT INTO tblstudent (student_number, student_email, university, password) VALUES ($studentNumber, $email, $university, $password)";
-      $query = mysqli_query($conn, $sql);
-      $stmt = mysqli_stmt_init($conn);
-      $prepareStatement = mysqli_stmt_prepare($stmt, $sql);
-      if ($prepareStatement) {
-        mysqli_stmt_bind_param($stmt, "ssss",);
-        mysqli_stmt_execute($stmt);
+      if ($conn->query($sql) === TRUE) {
         print "<div class='alert alert-success'>You have been registered successfully</div>";
+        header("location:login.php");
       } else {
-        die("Something went wrong");
+        print "<div alert alert-error>Something went wrong!</div>";
       }
     }
   }
