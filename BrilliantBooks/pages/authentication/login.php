@@ -1,4 +1,5 @@
 <?php
+include('./../Conndb.php');
 //Recieving user input
 if (isset($_POST["submit"])) {
   $password = $_POST["userLoginPassword"];
@@ -16,18 +17,14 @@ if (isset($_POST["submit"])) {
     }
   } else {
     //
-    @include './../Conndb.php';
-    $sql = "SELECT * FROM tbluser, tblstudent WHERE student_email = '$email' && password = '$password'";
-    $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result)) {
-      print "<div class='alert alert-success'>You have been registered successfully</div>";
-      header("location:index.php");
-    } else {
-      print "<div alert alert-error>Som;ething went wrong!</div>";
+    $sql = "SELECT * FROM tblstudent WHERE student_email = '$email' && password = '$password'";
+    try {
+      $result = mysqli_query($conn, $sql);
+      print "<div class='alert alert-success'>Welcome $email</div>";
+      header("location:./index.php");
+    } catch (mysqli_sql_exception) {
+      print "<div class='alert alert-error'>Something went wrong!</div>";
     }
-  }
-  if (isset($_POST["currentUser"])) {
-    header("Location: studentRegistration.php");
   }
 }
 ?>
@@ -75,7 +72,7 @@ if (isset($_POST["submit"])) {
     </div>
   </nav>
   <article>
-    <div class="container d-flex p-2 mw-100">
+    <div class="d-flex p-2 w-100">
       <div class="rightHandSide w-50 p-5">
         <h1 class="bold">WELCOME</h1>
         <form action="login.php" method="get" class="d-flex flex-column">
@@ -93,8 +90,8 @@ if (isset($_POST["submit"])) {
           </div>
         </form>
       </div>
-      <div class="leftHandSide w-100">
-        <img src="./../../images/images/login/login_picture.png" alt="this is a picture for decorating the login page" class="w-auto h-auto">
+      <div class="leftHandSide w-50">
+        <img src="./../../images/images/login/login_picture.png" alt="this is a picture for decorating the login page" class="w-max h-auto">
       </div>
     </div>
   </article>

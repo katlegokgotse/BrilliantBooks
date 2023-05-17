@@ -10,7 +10,7 @@
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
   <script src="https://accounts.google.com/gsi/client" async defer></script>
-  <title>Login | Brilliant Books</title>
+  <title><?= "Intranet | Brilliant Books" ?></title>
 </head>
 
 <body>
@@ -35,19 +35,15 @@
             <a class="nav-link" href="#">Cart</a>
           </li>
         </ul>
-        <button class="navbar-text bg-dark rounded-5 p-2 text-white">
-          Sign up
-        </button>
       </div>
     </div>
   </nav>
   <article>
     <h1 class="bold text-center">WELCOME TO INTRANET</h1>
     <div class="container d-flex p-2 m-auto justify-content-center">
-      <form action="administratorLogin.php" method="get" class="d-flex flex-column">
-        <!---<button type="submit" class="signInWithGoogle my-2 btn btn-outline-dark" id="signInWithGoogle">Sign up with Google</button> --->
-        <input id="userLoginEmailAddress" type="text" name="userUsername" placeholder="Enter username" class="my-2">
-        <input id="userLoginPassword" type="password" name="userLoginPassword" placeholder="Enter Password" class="my-2">
+      <form action="administratorLogin.php" method="post" class="d-flex flex-column">
+        <input id="userLoginEmailAddress" type="text" name="adminUser" placeholder="Enter username" class="my-2">
+        <input id="userLoginPassword" type="password" name="adminPass" placeholder="Enter Password" class="my-2">
         <div class="buttons d-flex flex-column paddin">
           <button type="submit" class="loginButton btn btn-dark my-2" id="submit" name="submit">Login</button>
         </div>
@@ -56,10 +52,11 @@
     </div>
   </article>
   <?php
+  include("../Conndb.php");
   if (isset($_POST["submit"])) {
 
-    $adminUsername = $_POST["userUsername"];
-    $adminPassword = $_POST["userLoginPassword"];
+    $adminUsername = $_POST["adminUser"];
+    $adminPassword = $_POST["adminPass"];
     $errors = [];
     if (empty($adminUsername) or empty($adminPassword)) {
       array_push($errors, "All fields are required");
@@ -69,21 +66,19 @@
         print "<div class='alert alert-danger'>$error</div>";
       }
     } else {
-      //
-      require_once "../Conndb.php";
-      $sql = "SELECT FROM administrator_username, administrator_password FROM  tblAdministrator, tblUser WHERE administrator_username='$adminUsername', administrator_password='$adminPassword'";
-      $result = mysqli_query($conn, $sql);
-
-      if (mysqli_num_rows($result) > 0) {
+      // $sql = "SELECT FROM administrator_username, administrator_password FROM  tblAdministrator, tblUser WHERE administrator_username='$adminUsername', administrator_password='$adminPassword'";
+      //$result = mysqli_query($conn, $sql);
+      print "<div class='alert alert-success'>You have been registered successfully</div>";
+      header("location:./../adminDashboard.php");
+      /*if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_array($result);
         if ($row['user_type'] == 'admin') {
-          print "<div class='alert alert-success'>You have been registered successfully</div>";
-          header("location:adminDashboard.php");
+         
         } else {
           print "<div class='alert alert-error'>You don't have admin priveleges or wrong input</div>";
           die("Something went wrong!");
         }
-      }
+      }*/
     }
   }
   ?>

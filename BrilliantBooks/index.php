@@ -95,6 +95,7 @@
       <p>Careers</p>
       <ul class="">
         <li><a href="./pages//authentication//administratorLogin.php">Intranet</a></li>
+        <li><a href="./pages//adminDashboard.php">Intranet</a></li>
         <li><a href="./pages//careers//careers.php">Get a job</a></li>
       </ul>
     </div>
