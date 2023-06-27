@@ -1,10 +1,3 @@
-<?php
-$con = mysqli_connect('localhost', 'root');
-mysqli_select_db($con, "BrilliantBookstore");
-$sql = "SELECT * FROM tblbooks WHERE featured=1";
-$featured = $con->query($sql);
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,62 +46,7 @@ $featured = $con->query($sql);
       </div>
     </div>
   </nav>
-  <article>
-    <div class="container d-flex justify-content-center">
-      <div class="userPrompt bg-dark text-white rounded-1 w-25 p-2 m-2 d-flex justify-content-center">
-        Welcome, <?= "user" ?>!
-      </div>
-    </div>
 
-
-    <div class="container d-flex justify-content-center p-2 m-auto align-items-center w-100">
-      <div class="rightHandSide d-flex align-items-center w-50">
-        <p class="fs-1 fw-bold text-break p-5">Find the BOOK you are looking for. Through our platform which allows you to buy, sell and trade books with fellow students</p>
-      </div>
-      <div class="leftHandSide w-50">
-        <img src="./images//images//login//index_bg.png" alt="">
-      </div>
-  </article>
-  <div class="d-flex justify-content-center w-100 p-5">
-    <div class="search w-max">
-      <form class=" w-max" action="index.php" method="get">
-        <input type="text" name="bookSearch" class="bookSearch mw-auto" id="bookSearch" placeholder="Search for the book">
-      </form>
-    </div>
-  </div>
-  <div class="wrapper">
-    <i class="fa-solid fa-angle-left" id="left"></i>
-    <div class="carousel">
-      <img class="object-fill-cover" src="./images//images//slideshow//dreams.png" alt="">
-      <img class="object-fill-cover" src="./images//images//slideshow//design_fund.png" alt="">
-      <img class="object-fill-cover" src="./images//images//slideshow//human_anatomy.png" alt="">
-    </div>
-    <i class="fa-solid fa-angle-right" id="right"></i>
-  </div>
-  <div class="d-flex flex-column">
-    <h2 class="text-center">Top Books</h2>
-    <div class="d-grid">
-      <div class="d-flex flex-row mx-5 p-2">
-        <?php
-        while ($product = mysqli_fetch_assoc($featured)) :
-        ?>
-
-          <div class="card mx-2 g-col-4" style="width: 18rem;">
-            <img src="<?= $product['image']; ?>" alt="<?= $product['book_name']; ?>">
-            <div class="card-body">
-              <h4 class="text-center"><?= $product['book_name']; ?></h4>
-              <div class="butt d-flex flex-row">
-                <button class="btn btn-secondary mx-2">R <?= $product['book_price']; ?></button>
-                <a href="./pages//details.php">
-                  <button type="button" class="btn btn-success" data-bs-toggle="modal " data-bs-target="#details-1">More</button>
-                </a>
-              </div>
-            </div>
-          </div>
-        <?php endwhile; ?>
-      </div>
-    </div>
-  </div>
 
 
   <footer class="bg-dark d-flex w-100">

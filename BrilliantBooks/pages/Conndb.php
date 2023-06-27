@@ -3,8 +3,8 @@ $hostname = "localhost";
 $dbuser = "root";
 $password = "";
 $dbName = "brilliantbookstore";
-$connectDB = mysqli_connect($hostname, $dbuser, $password, $dbName);
+$conn = mysqli_connect($hostname, $dbuser, $password, $dbName);
 
-if (!$connectDB) {
+if ($conn->connect_error) {
   die("Couldn't connect");
 }

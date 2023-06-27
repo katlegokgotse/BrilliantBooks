@@ -13,7 +13,7 @@
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
-      <img class="d-inline-block align-text-top" src="images/logo/BRILLIANT.png" width="120" height="90">
+      <img class="d-inline-block align-text-top" src="./../../images//logo//BRILLIANT.png" width="120" height="90">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -39,32 +39,26 @@
     </div>
   </nav>
   <article>
-    <div class="container p-5 bg-blue">
-      <div class="rightHandSide">
-        <form action="registration.php" method="post">
-          <div class="form-group">
-            <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter Student number">
-          </div>
-          <div class="form-group">
-            <input id="universityEmailAddress" type="email" name="universityEmailAddress" placeholder="Enter student email Address">
-          </div>
-          <div class="form-group">
-            <input id="universityName" type="text" name="universityName" placeholder="Enter your university">
-          </div>
-          <div class="form-group">
-            <input id="password" type="password" name="password" placeholder="Enter password">
-          </div>
-          <div class="form-group">
-            <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
-          </div>
-          <div>
-          </div>
-          <button type="submit" class="loginButton bg-dark rounded-5 p-2 text-white" name="submit" id="submit">Login</button>
-          <button type="submit" class="forgetPassword" id="forgotPassword">Forgot password</button>
-        </form>
-      </div>
-      <div class="leftHandSide">
-        <img src="" alt="">
+
+    <div class="container">
+      <div class="d-flex justify-content-center w-100 p-2 h-20 m-auto align-items-center">
+        <div class="w-50 h-50 align-items-center">
+          <h1 class="text-center">Join our alumni</h1>
+          <form action="./registration.php" method="post" class="d-flex flex-column justify-content-center align-items-center p-2">
+            <div class="form-group">
+              <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter Student number">
+            </div>
+
+
+
+            <div>
+            </div>
+            <button type="submit" class="loginButton bg-dark rounded-2 w-auto p-2 text-white" name="submit" id="submit">Register</button>
+          </form>
+        </div>
+        <div class="w-50 h-50">
+          <img src="./../../images//images//login//login_picture.png" alt="" class="w-auto h-auto object-fit-fill">
+        </div>
       </div>
     </div>
   </article>
@@ -73,10 +67,13 @@
   <?php
   //Recieving user input
   if (isset($_POST["submit"])) {
-    $studentNumber = $_POST["universityStudentNumber"];
-    $email = $_POST["universityEmailAddress"];
-    $password = $_POST["password"];
-    $confirmPassword = $_POST["confirmPassword"];
+    include("./../Conndb.php");
+
+    $studentNumber = mysqli_real_escape_string($conn, $_POST["universityStudentNumber"]);
+    $email = mysqli_real_escape_string($conn, $_POST["universityEmailAddress"]);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]);
+    $confirmPassword = mysqli_real_escape_string($conn, $_POST["confirmPassword"]);
+    $university = mysqli_real_escape_string($conn, $_POST["universityName"]);
 
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -98,8 +95,16 @@
         print "<div class='alert alert-danger'>$error</div>";
       }
     } else {
-      //
-      require_once "../../Conndb.php";
+      $sql = "INSERT INTO tblstudent (user_id, student_number, student_email, university, password) VALUES ('$studentNumber', '$email', '$university', '$password')";
+      try {
+        $result = mysqli_query($conn, $sql);
+        $_SESSION["create"] = "user Added Successfully!";
+        print "<div class='alert alert-success'>You have been registered successfully</div>";
+        header("location:./login.php");
+      } catch (mysqli_sql_exception) {
+        die("something went wrong");
+        print "<div alert alert-error>Something went wrong!</div>";
+      }
     }
   }
   ?>

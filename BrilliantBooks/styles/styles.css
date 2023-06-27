@@ -1,7 +1,87 @@
 *{
   padding : 0;
   margin : 0;
+  box-sizing: border-box;
 }
 form input{
   margin: 10px;
 }
+.wrapper{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px;
+  padding: 10px;
+  position: relative;
+}
+.wrapper .carousel{
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}
+.carousel .dragging{
+  cursor: grab;
+  scroll-behavior: auto;
+}
+.carousel .dragging img{
+  pointer-events: none;
+}
+.wrapper i{
+  height: 45px;
+  width: 45px;
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 10px;
+  background-color: #00000000;
+  color: white;
+  border-radius: 50%;
+  cursor: pointer;
+  margin: 30px;
+  font-size: 1.2em;
+  transform: translateY(-50%);
+  z-index: 4;
+}
+.wrapper i:hover{
+  background-color: #000000;
+  transition: 0.8s;
+  opacity: 0.2;
+}
+
+.wrapper i:first-child{
+  left: -23px;
+}
+.wrapper i:last-child{
+  right: -23px;
+}
+
+.carousel img{
+  height: 340px;
+  object-fit: cover;
+  width: 100%;
+  margin:14px;
+}
+.carousel img:first-child{
+  margin-left: 0px;
+}
+
+@media screen and (max-width: 900px){
+  .carousel{
+    width: 100%;
+  }
+  .carousel img{
+    width: 100%;
+  }
+}
+@media screen and (max-width: 550px){
+  .carousel{
+    width: 100%;
+  }
+  .carousel img{
+    width: 100%;
+  }
+}
+
