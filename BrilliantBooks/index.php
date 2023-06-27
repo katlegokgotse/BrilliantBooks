@@ -1,3 +1,10 @@
+<?php
+$con = mysqli_connect('localhost', 'root');
+mysqli_select_db($con, "BrilliantBookstore");
+$sql = "SELECT * FROM tblbooks WHERE featured=1";
+$featured = $con->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,16 +28,16 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link" href="#">Category</a>
+            <a class="nav-link" href="./pages//category.php">Category</a>
           </li>
           <li class="nav-item d-flex align">
             <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cart</a>
+            <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
         <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
@@ -39,7 +46,7 @@
           </a>
         </button>
         <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/registration.php">
+          <a href="pages/authentication/login.php">
             Sign in
           </a>
         </button>
@@ -78,6 +85,32 @@
     </div>
     <i class="fa-solid fa-angle-right" id="right"></i>
   </div>
+  <div class="d-flex flex-column">
+    <h2 class="text-center">Top Books</h2>
+    <div class="d-grid">
+      <div class="d-flex flex-row mx-5 p-2">
+        <?php
+        while ($product = mysqli_fetch_assoc($featured)) :
+        ?>
+
+          <div class="card mx-2 g-col-4" style="width: 18rem;">
+            <img src="<?= $product['image']; ?>" alt="<?= $product['book_name']; ?>">
+            <div class="card-body">
+              <h4 class="text-center"><?= $product['book_name']; ?></h4>
+              <div class="butt d-flex flex-row">
+                <button class="btn btn-secondary mx-2">R <?= $product['book_price']; ?></button>
+                <a href="./pages//details.php">
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal " data-bs-target="#details-1">More</button>
+                </a>
+              </div>
+            </div>
+          </div>
+        <?php endwhile; ?>
+      </div>
+    </div>
+  </div>
+
+
   <footer class="bg-dark d-flex w-100">
     <div class="w-20">
       <img src="./images//images//logo//Brilliant_white.png" alt="" class="w-100">
@@ -85,18 +118,23 @@
     <div class="w-20">
       <p>Brilliant Books</p>
       <ul class="">
-        <li><a href="">Home</a></li>
-        <li><a href="">Category</a></li>
-        <li><a href="">About us</a></li>
-        <li><a href="">Cart</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Home</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Category</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">About us</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Cart</a></li>
       </ul>
     </div>
     <div class="w-20">
       <p>Careers</p>
       <ul class="">
-        <li><a href="./pages//authentication//administratorLogin.php">Intranet</a></li>
-        <li><a href="./pages//adminDashboard.php">Intranet</a></li>
-        <li><a href="./pages//careers//careers.php">Get a job</a></li>
+        <<<<<<< HEAD <li><a href="./pages//authentication//administratorLogin.php">Intranet</a></li>
+          <li><a href="./pages//adminDashboard.php">Intranet</a></li>
+          <li><a href="./pages//careers//careers.php">Get a job</a></li>
+          =======
+          <li><a href="./pages//authentication//administratorLogin.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+          <li><a href="./pages//adminDashboard.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+          <li><a href="./pages//careers//careers.php" class="link-underline link-underline-opacity-0 text-white">Get a job</a></li>
+          >>>>>>> main
       </ul>
     </div>
     <div class="w-20">
@@ -104,13 +142,13 @@
     </div>
     <div class="w-20"></div>
   </footer>
-  <?php
+  <<<<<<< HEAD <?php
 
-  ?>
-  <script src="./scripts//animations//slideshow_animations.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="script/animations/lottie_animations.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+                ?>=======>>>>>>> main
+    <script src="./scripts//animations//slideshow_animations.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script/animations/lottie_animations.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
 </body>
 
 </html>

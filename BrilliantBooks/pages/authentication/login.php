@@ -17,7 +17,7 @@ if (isset($_POST["submit"])) {
     }
   } else {
     //
-    $sql = "SELECT * FROM tblstudent WHERE student_email = '$email' && password = '$password'";
+    $sql = "SELECT * FROM tbluser WHERE student_email = '$email' && password = '$password'";
     try {
       $result = mysqli_query($conn, $sql);
       print "<div class='alert alert-success'>Welcome $email</div>";
@@ -51,18 +51,18 @@ if (isset($_POST["submit"])) {
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
-        <ul class="navbar-nav me-auto mb-2 mb-lg-0r d-flex align-items-center">
+        <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="#">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link" href="#">Category</a>
+            <a class="nav-link" href="./pages//category.php" aria-current="page">Category</a>
           </li>
           <li class="nav-item d-flex align">
-            <a class="nav-link" href="#">About us</a>
+            <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cart</a>
+            <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
         <button class="navbar-text bg-dark rounded-5 p-2 text-white">
@@ -95,7 +95,32 @@ if (isset($_POST["submit"])) {
       </div>
     </div>
   </article>
-
+  <footer class="bg-dark d-flex w-100">
+    <div class="w-20">
+      <img src="./images//images//logo//Brilliant_white.png" alt="" class="w-100">
+    </div>
+    <div class="w-20">
+      <p>Brilliant Books</p>
+      <ul class="">
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Home</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Category</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">About us</a></li>
+        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Cart</a></li>
+      </ul>
+    </div>
+    <div class="w-20">
+      <p>Careers</p>
+      <ul class="">
+        <li><a href="./pages//authentication//administratorLogin.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+        <li><a href="./pages//adminDashboard.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+        <li><a href="./pages//careers//careers.php" class="link-underline link-underline-opacity-0 text-white">Get a job</a></li>
+      </ul>
+    </div>
+    <div class="w-20">
+      <p></p>
+    </div>
+    <div class="w-20"></div>
+  </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="scripts/authentication/authenication.js"></script>
 </body>

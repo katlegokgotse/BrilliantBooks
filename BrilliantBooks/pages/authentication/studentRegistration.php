@@ -48,18 +48,9 @@
             <div class="form-group">
               <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter Student number">
             </div>
-            <div class="form-group">
-              <input id="universityEmailAddress" type="email" name="universityEmailAddress" placeholder="Enter student email Address">
-            </div>
-            <div class="form-group">
-              <input id="universityName" type="text" name="universityName" placeholder="Enter your university">
-            </div>
-            <div class="form-group">
-              <input id="password" type="password" name="password" placeholder="Enter password">
-            </div>
-            <div class="form-group">
-              <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
-            </div>
+
+
+
             <div>
             </div>
             <button type="submit" class="loginButton bg-dark rounded-2 w-auto p-2 text-white" name="submit" id="submit">Register</button>

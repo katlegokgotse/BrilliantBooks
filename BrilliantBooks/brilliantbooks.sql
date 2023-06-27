@@ -5,3 +5,4 @@ CREATE TABLE `brilliantbookstore`.`tblslideshows`
   `title` INT NOT NULL , PRIMARY KEY (`slide_id`)
 ) 
   ENGINE = InnoDB;
+  ALTER TABLE `tbluser` ADD `university` INT(128) NOT NULL AFTER `email`, ADD `password` VARCHAR(128) NOT NULL AFTER `university`;

@@ -58,7 +58,11 @@
             We're sure you may locate what you're looking for at Books
           </p>
           <div class="d-flex flex-row justify-content-center align-items-center">
+<<<<<<< HEAD
             <a href="#" class="link-underline link-underline-opacity-0 text-white">Open roles <span aria-hidden="true">&rarr;</span></a>
+=======
+            <a href="#" class="link-underline link-underline-opacity-0 text-white">Company Policy <span aria-hidden="true">&rarr;</span></a>
+>>>>>>> main
             <a href="#" class="link-underline link-underline-opacity-0 text-white">Internship program <span aria-hidden="true">&rarr;</span></a>
             <a href="#" class="link-underline link-underline-opacity-0 text-white">Our values <span aria-hidden="true">&rarr;</span></a>
             <a href="#" class="link-underline link-underline-opacity-0 text-white">Meet our leadership <span aria-hidden="true">&rarr;</span></a>
@@ -67,8 +71,13 @@
         <div class="mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <dl class="mt-16 grid grid-column gap-8">
             <div class="d-flex flex-column-reverse">
+<<<<<<< HEAD
               <dt class="fs-3 leading-7 text-gray-300">Offices worldwide</dt>
               <dd class="fs-5 font-bold leading-9 tracking-tight text-white">12</dd>
+=======
+              <dt class="fs-3 leading-7 text-gray-300">Open since</dt>
+              <dd class="fs-5 font-bold leading-9 tracking-tight text-white">'23</dd>
+>>>>>>> main
             </div>
             <div class="d-flex flex-column-reverse">
               <dt class="fs-3 leading-7 text-gray-300">Full-time colleagues</dt>
@@ -105,7 +114,11 @@
     <div class="w-20">
       <p>Careers</p>
       <ul class="">
+<<<<<<< HEAD
         <li><a class="" shref="./pages//authentication//administratorLogin.php">Intranet</a></li>
+=======
+        <li><a class="" href="./pages//authentication//administratorLogin.php">Intranet</a></li>
+>>>>>>> main
         <li><a class="" href="./pages//careers//careers.php">Get a job</a></li>
       </ul>
     </div>

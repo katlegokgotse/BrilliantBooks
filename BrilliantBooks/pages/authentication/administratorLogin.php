@@ -21,6 +21,7 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
+<<<<<<< HEAD
         <ul class="navbar-nav me-auto mb-2 mb-lg-0r d-flex align-items-center">
           <li class="nav-item d-flex justify-content-center">
             <a class="nav-link active" aria-current="page" href="#">Home</a>
@@ -33,6 +34,20 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">Cart</a>
+=======
+        <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
+          <li class="nav-item d-flex justify-content-center">
+            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+          </li>
+          <li class="nav-item d-flex justify-content-center">
+            <a class="nav-link" href="./pages//category.php">Category</a>
+          </li>
+          <li class="nav-item d-flex align">
+            <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages//cart.php">Cart</a>
+>>>>>>> main
           </li>
         </ul>
       </div>
