@@ -1,12 +1,14 @@
-*{
-  padding : 0;
-  margin : 0;
+* {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
 }
-form input{
+
+form input {
   margin: 10px;
 }
-.wrapper{
+
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,20 +16,24 @@ form input{
   padding: 10px;
   position: relative;
 }
-.wrapper .carousel{
+
+.wrapper .carousel {
   white-space: nowrap;
   cursor: pointer;
   overflow: hidden;
   scroll-behavior: smooth;
 }
-.carousel .dragging{
+
+.carousel .dragging {
   cursor: grab;
   scroll-behavior: auto;
 }
-.carousel .dragging img{
+
+.carousel .dragging img {
   pointer-events: none;
 }
-.wrapper i{
+
+.wrapper i {
   height: 45px;
   width: 45px;
   display: flex;
@@ -45,43 +51,48 @@ form input{
   transform: translateY(-50%);
   z-index: 4;
 }
-.wrapper i:hover{
+
+.wrapper i:hover {
   background-color: #000000;
   transition: 0.8s;
   opacity: 0.2;
 }
 
-.wrapper i:first-child{
+.wrapper i:first-child {
   left: -23px;
 }
-.wrapper i:last-child{
+
+.wrapper i:last-child {
   right: -23px;
 }
 
-.carousel img{
+.carousel img {
   height: 340px;
   object-fit: cover;
   width: 100%;
-  margin:14px;
+  margin: 14px;
 }
-.carousel img:first-child{
+
+.carousel img:first-child {
   margin-left: 0px;
 }
 
-@media screen and (max-width: 900px){
-  .carousel{
+@media screen and (max-width: 900px) {
+  .carousel {
     width: 100%;
   }
-  .carousel img{
-    width: 100%;
-  }
-}
-@media screen and (max-width: 550px){
-  .carousel{
-    width: 100%;
-  }
-  .carousel img{
+
+  .carousel img {
     width: 100%;
   }
 }
 
+@media screen and (max-width: 550px) {
+  .carousel {
+    width: 100%;
+  }
+
+  .carousel img {
+    width: 100%;
+  }
+}
