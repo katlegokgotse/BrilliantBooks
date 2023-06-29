@@ -1,3 +1,9 @@
+<?php
+$conn = mysqli_connect('localhost', 'root');
+mysqli_select_db($conn, 'BrilliantBookstore');
+$sql = "SELECT * FROM tblbooks";
+$featured = $conn->query($sql);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,7 +11,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles//styles.css">
+  <link rel="stylesheet" href="./products.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <title><?= "Home | Brilliant Books" ?></title>
@@ -46,8 +52,28 @@
       </div>
     </div>
   </nav>
-
-
+  <div class="container">
+    <section class="products">
+      <h1 class="heading">Latest products</h1>
+      <div class="box-container">
+        <?php
+        while ($product = mysqli_fetch_assoc($featured)) :
+        ?>
+          <form action="" method="post">
+            <div class="box">
+              <img src="<?= $product['image'] ?>" alt="" srcset="">
+              <h3><?= $product['book_name'] ?></h3>
+              <div class="price">R<?= $product['book_price']; ?></div>
+              <input type="hidden" name="product_name" value="<?php echo $product['book_name']; ?>">
+              <input type="hidden" name="product_price" value="<?php echo $product['book_price']; ?>">
+              <input type="hidden" name="product_image" value="<?php echo $product['image']; ?>">
+              <input type="submit" class="btn" value="add to cart" name="add_to_cart">
+            </div>
+          </form>
+        <?php endwhile; ?>
+      </div>
+    </section>
+  </div>
 
   <footer class="bg-dark d-flex w-100">
     <div class="w-20">

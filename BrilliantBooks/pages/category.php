@@ -48,35 +48,54 @@
   </nav>
 
   <span class="background">
+    <h1 class="d-flex justify-content-center align-items-center text-white">CATEGORY</h1>
     <section class="gallery">
       <article class="card">
         <figure>
-          <img src="./..//images//images//category//law.jpg" alt="law" srcset="">
+          <img src="./law.jpg" alt="law" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Law</a>
+          </div>
         </figure>
       </article>
       <article class="card">
         <figure>
-          <img src="../images//images//category//technology.jpg" alt="technology" srcset="">
+          <img src="./technology.jpg" alt="technology" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Technology</a>
+          </div>
         </figure>
       </article>
       <article class="card">
         <figure>
-          <img src="./../images//images//category//medicine.jpg" alt="medicine" srcset="">
+          <img src="./medicine.jpg" alt="medicine" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Medicine</a>
+          </div>
         </figure>
       </article>
       <article class="card">
         <figure>
-          <img src="./../images//images//category//education.jpg" alt="education" srcset="">
+          <img src="./education.jpg" alt="education" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Education</a>
+          </div>
         </figure>
       </article>
       <article class="card">
         <figure>
-          <img src="./../images//images//category//philosophy.jpg" alt="philosophy" srcset="">
+          <img src="./philosophy.jpg" alt="philosophy" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Philosophy</a>
+          </div>
         </figure>
       </article>
       <article class="card">
         <figure>
-          <img src="./../images//images//category//sport.jpg" alt="sports" srcset="">
+          <img src="./sport.jpg" alt="sports" srcset="">
+          <div class="d-flex justify-content-center align-items-center">
+            <a href="http://">Sport</a>
+          </div>
         </figure>
       </article>
     </section>

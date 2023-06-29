@@ -37,6 +37,9 @@ $featured = $con->query($sql);
             <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
+            <a class="nav-link" href="./pages//Products.php">Products</a>
+          </li>
+          <li class="nav-item">
             <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
