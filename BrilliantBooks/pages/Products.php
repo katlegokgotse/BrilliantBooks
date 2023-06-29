@@ -1,8 +1,26 @@
 <?php
-$conn = mysqli_connect('localhost', 'root');
-mysqli_select_db($conn, 'BrilliantBookstore');
+$con = mysqli_connect('localhost', 'root');
+mysqli_select_db($con, 'BrilliantBookstore');
 $sql = "SELECT * FROM tblbooks";
-$featured = $conn->query($sql);
+$featured = $con->query($sql);
+
+@include 'conndb.php';
+
+if (isset($_POST['add_to_cart'])) {
+  $product_name = $_POST['product_name'];
+  $product_price = $_POST['product_price'];
+  $product_image = $_POST['product_image'];
+  $product_quantity = 1;
+
+  $selectFromCart = mysqli_query($conn, "SELECT * FROM `cart` WHERE name='$product_name'");
+
+  if (mysqli_num_rows($selectFromCart) > 0) {
+    $message[] = "Product already added to cart";
+  } else {
+    $insert_product = mysqli_query($conn, "INSERT INTO `cart`(name, price, image, quantity)
+    VALUES('$product_name', '$product_price', '$product_image', '$product_quantity')");
+  }
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +32,7 @@ $featured = $conn->query($sql);
   <link rel="stylesheet" href="./products.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <title><?= "Home | Brilliant Books" ?></title>
+  <title><?= "Products | Brilliant Books" ?></title>
 </head>
 
 <body>
@@ -36,16 +54,16 @@ $featured = $conn->query($sql);
             <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./pages//cart.php">Cart</a>
+            <a class="nav-link" href="./cart.php">Cart</a>
           </li>
         </ul>
         <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/registration.php">
+          <a href="./authentication//registration.php">
             Sign up
           </a>
         </button>
         <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/login.php">
+          <a href="./authentication//login.php">
             Sign in
           </a>
         </button>
@@ -57,6 +75,11 @@ $featured = $conn->query($sql);
       <h1 class="heading">Latest products</h1>
       <div class="box-container">
         <?php
+        if (isset($message)) {
+          foreach ($message as $message) {
+            print '<div class="message"><span></span><i class="fas fa-times" onclick="this.parentElement.style.display = `none`;"></i></div>';
+          }
+        }
         while ($product = mysqli_fetch_assoc($featured)) :
         ?>
           <form action="" method="post">

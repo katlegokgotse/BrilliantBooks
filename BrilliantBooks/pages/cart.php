@@ -1,10 +1,12 @@
 <?php
-$con = mysqli_connect('localhost', 'root');
-mysqli_select_db($con, "BrilliantBookstore");
-$sql = "SELECT * FROM tblbooks WHERE featured=1";
-$featured = $con->query($sql);
-?>
+$conn = mysqli_connect('localhost', 'root');
+mysqli_select_db($conn, 'BrilliantBookstore');
+$sql = "SELECT * FROM tblbooks";
+$featured = $conn->query($sql);
 
+
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -12,11 +14,10 @@ $featured = $con->query($sql);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./styles//styles.css">
-  <link rel="stylesheet" href="./pages//products.css">
+  <link rel="stylesheet" href="./products.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <title><?= "Home | Brilliant Books" ?></title>
+  <title><?= "Cart | Brilliant Books" ?></title>
 </head>
 
 <body>
@@ -38,9 +39,6 @@ $featured = $con->query($sql);
             <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./pages//Products.php">Products</a>
-          </li>
-          <li class="nav-item">
             <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
@@ -57,64 +55,53 @@ $featured = $con->query($sql);
       </div>
     </div>
   </nav>
-  <article>
-    <div class="container d-flex justify-content-center">
-      <div class="userPrompt bg-dark text-white rounded-1 w-25 p-2 m-2 d-flex justify-content-center">
-        Welcome, <?= "user" ?>!
+  <div class="container">
+    <section class="shopping-cart">
+      <h1 class="heading">Shopping cart</h1>
+      <table>
+        <thead>
+          <th>image</th>
+          <th>name</th>
+          <th>price</th>
+          <th>quantity</th>
+          <th>total price</th>
+          <th>action</th>
+        </thead>
+        <tbody>
+          <?php
+          $sql = "SELECT * FROM `cart`";
+          $select_cart = mysqli_query($conn, $sql);
+          ?>
+          <tr>
+            <td><img src="uploaded_img/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
+            <td><?php echo $product['name']; ?></td>
+            <td>$<?= number_format($productt['price']); ?>/-</td>
+            <td>
+              <form action="" method="post">
+                <input type="hidden" name="update_quantity_id" value="<?= $product['id']; ?>">
+                <input type="number" name="update_quantity" min="1" value="<?= $product['quantity']; ?>">
+                <input type="submit" value="update" name="update_update_btn">
+              </form>
+            </td>
+            <td>R<?= $sub_total = number_format($product['price'] * $product['quantity']); ?>/-</td>
+            <td><a href="cart.php?remove=<?= $product['id']; ?>" onclick="return confirm('remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
+          </tr>
+          <?php
+          $grand_total += $sub_total;
+          ?>
+          <tr class="table-bottom">
+            <td><a href="products.php" class="option-btn" style="margin-top: 0;">continue shopping</a></td>
+            <td colspan="3">grand total</td>
+            <td>R<?= $grand_total; ?>/-</td>
+            <td><a href="cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> delete all </a></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="checkout-btn">
+        <a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">procced to checkout</a>
       </div>
-    </div>
-
-
-    <div class="container d-flex justify-content-center p-2 m-auto align-items-center w-100">
-      <div class="rightHandSide d-flex align-items-center w-50">
-        <p class="fs-1 fw-bold text-break p-5">Find the BOOK you are looking for. Through our platform which allows you to buy, sell and trade books with fellow students</p>
-      </div>
-      <div class="leftHandSide w-50">
-        <img class="w-100 rounded-5" src="./images//images//login//index_bg.png" alt="">
-      </div>
-  </article>
-  <div class="d-flex justify-content-center w-100 p-5">
-    <div class="search w-max">
-      <form class=" w-max" action="index.php" method="get">
-        <input type="text" name="bookSearch" class="bookSearch mw-auto" id="bookSearch" placeholder="Search for the book">
-      </form>
-    </div>
+    </section>
   </div>
-  <div class="wrapper">
-    <i class="fa-solid fa-angle-left" id="left"></i>
-    <div class="carousel">
-      <img class="object-fill-cover" src="./images//images//slideshow//dreams.png" alt="">
-      <img class="object-fill-cover" src="./images//images//slideshow//design_fund.png" alt="">
-      <img class="object-fill-cover" src="./images//images//slideshow//human_anatomy.png" alt="">
-    </div>
-    <i class="fa-solid fa-angle-right" id="right"></i>
-  </div>
-  <div class="d-flex flex-column">
-    <h2 class="text-center">Top Books</h2>
-    <div class="d-grid">
-      <div class="d-flex flex-row mx-5 p-2">
-        <?php
-        while ($product = mysqli_fetch_assoc($featured)) :
-        ?>
-
-          <div class="card mx-2 g-col-4" style="width: 18rem;">
-            <img src="<?= $product['image']; ?>" alt="<?= $product['book_name']; ?>">
-
-            <h4 class="price"><?= $product['book_name']; ?></h4>
-            <div class="butt d-flex flex-row">
-              <button class="btn price  mx-2">R <?= $product['book_price']; ?></button>
-              <a href="./pages//details.php">
-                <button type="button" class="btn btn-success" data-bs-toggle="modal " data-bs-target="#details-1">More</button>
-              </a>
-            </div>
-
-          </div>
-        <?php endwhile; ?>
-      </div>
-    </div>
-  </div>
-
-
   <footer class="bg-dark d-flex w-100">
     <div class="w-20">
       <img src="./images//images//logo//Brilliant_white.png" alt="" class="w-100">
