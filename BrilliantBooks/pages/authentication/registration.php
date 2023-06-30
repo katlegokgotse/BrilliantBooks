@@ -5,7 +5,8 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="styles/style.css">
+  <link rel="stylesheet" href="./../../styles//styles.css">
+  <link rel="stylesheet" href="./registration.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <title>Registration | Brilliant Books</title>
 </head>
@@ -32,51 +33,45 @@
             <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
-        <button class="navbar-text bg-dark rounded-5 p-2 text-white">
-          Sign up
-        </button>
       </div>
     </div>
   </nav>
   <article>
-    <div class="container p-5 bg-blue d-flex w-100 h-50 align-items-center justify-content-center">
-      <div class="rightHandSide w-50 p-2 m-auto">
-
-
-      </div>
-    </div>
     <div class="position-relative overflow-hidden py-24 sm:py-32 p-5">
-      <div class="d-flex justify-content-center w-100 mx-auto max-w-7xl px-6 lg:px-8">
+      <div class="d-flex justify-content-center w-100 mx-auto max-w-7xl px-6 lg:px-8 md:d-inline-grid">
         <div class="w-50 max-w-2xl lg:mx-0">
           <h1 class="text-align-center">Welcome to Brilliant Books</h1>
-          <form action="registration.php" method="post" class="d-flex flex-column justify-content-center align-items-center p-2">
-            <div class="form-group m-2 p-2">
-              <input id="userRegistrationName" type="text" name="userRegistrationName" placeholder="Enter first name">
-            </div>
-            <div class="form-group p-2 m-2">
-              <input id="userRegistrationSurname" type="text" name="userRegistrationSurname" placeholder="Enter last name">
-            </div>
 
-            <div class="form-group p-2 m-2">
-              <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter student number">
-            </div>
-            <div class="form-group p-2 m-2">
-              <input id="universityName" type="text" name="universityName" placeholder="Enter your university">
-            </div>
-            <div class="form-group p-2 m-2">
-              <input id="universityEmailAddress" type="email" name="universityEmailAddress" placeholder="Enter student email Address">
-            </div>
-            <div class="form-group p-2 m-2">
-              <input id="password" type="password" name="password" placeholder="Enter password">
-            </div>
-            <div class="form-group p-2 m-2">
-              <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
-            </div>
-            <div>
-            </div>
-            <button type="submit" class="loginButton bg-dark rounded-1 m-2 w-100 p-2 text-white" name="submit" id="submit">Register</button>
-            <button type="submit" class="forgetPassword btn btn-light w-100 m-2 p-2" name="currentUser" id="alreadyHaveAnAcc" onclick="goToLogin">Already have an account? <a href="./login.php">Login</a></button>
-          </form>
+          <div class="form-container">
+            <form action="" method="post" class="d-flex flex-column justify-content-center align-items-center p-2">
+              <div class="form-group m-2 p-2">
+                <input classs="box" id="userRegistrationName" type="text" name="userRegistrationName" placeholder="Enter first name">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="userRegistrationSurname" type="text" name="userRegistrationSurname" placeholder="Enter last name">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="universityStudentNumber" type="text" name="universityStudentNumber" placeholder="Enter student number">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="universityName" type="text" name="universityName" placeholder="Enter your university">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="universityEmailAddress" type="email" name="universityEmailAddress" placeholder="Enter student email Address">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="password" type="password" name="password" placeholder="Enter password">
+              </div>
+              <div class="form-group p-2 m-2">
+                <input id="confirmPassword" type="password" name="confirmPassword" placeholder="Confirm password">
+              </div>
+              <div>
+              </div>
+              <button type="submit" class="loginButton bg-dark rounded-1 m-2 w-100 p-2 text-white" name="submit" id="submit">Register</button>
+              <button type="submit" class="forgetPassword btn btn-light w-100 m-2 p-2" name="currentUser" id="alreadyHaveAnAcc" onclick="goToLogin">Already have an account? <a href="./login.php">Login</a></button>
+            </form>
+          </div>
+
         </div>
         <div class="w-50 mx-auto mt-10 max-w-2xl lg:mx-0 lg:max-w-none">
           <img src="./../../images//images//login//login_picture.png" alt="">
