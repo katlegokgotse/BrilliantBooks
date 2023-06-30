@@ -13,7 +13,7 @@ $featured = $con->query($sql);
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./styles//styles.css">
-  <link rel="stylesheet" href="./pages//products.css">
+  <link rel="stylesheet" href="./products.php">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
   <title><?= "Technology | Brilliant Books" ?></title>
@@ -72,45 +72,46 @@ $featured = $con->query($sql);
 
   </div>
 
-
-  <footer>
-    <div class="container">
-      <div class="row">
-        <div class="col-sm-6 col-md-3 item">
-          <h3 class="mt-0 mb-3 fw-bold fs-2">Services</h3>
-          <ul class="">
-            <li><a href="./index.php" class="link-underline link-underline-opacity-0 text-white">Home</a></li>
-            <li><a href="./pages//category.php" class="link-underline link-underline-opacity-0 text-white">Category</a></li>
-            <li><a href="./pages//about//aboutUs.php" class="link-underline link-underline-opacity-0 text-white">About us</a></li>
-            <li><a href="./pages//cart.php" class="link-underline link-underline-opacity-0 text-white">Cart</a></li>
-          </ul>
+  <div class="footer-dark bg-dark text-white">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 item">
+            <h3 class="mt-0 mb-3 fw-bold fs-2">Services</h3>
+            <ul class="">
+              <li><a href="./index.php" class="link-underline link-underline-opacity-0 text-white">Home</a></li>
+              <li><a href="./pages//category.php" class="link-underline link-underline-opacity-0 text-white">Category</a></li>
+              <li><a href="./pages//about//aboutUs.php" class="link-underline link-underline-opacity-0 text-white">About us</a></li>
+              <li><a href="./pages//cart.php" class="link-underline link-underline-opacity-0 text-white">Cart</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-3 item">
+            <h3 class="mt-0 mb-3 fw-bold fs-2">About</h3>
+            <ul>
+              <li><a href=" #" class="link-underline link-underline-opacity-0 text-white">Company</a></li>
+              <li><a href="#" class="link-underline link-underline-opacity-0 text-white">Team</a></li>
+              <li><a href="#" class="link-underline link-underline-opacity-0 text-white">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 item text">
+            <h3 class="mt-0 mb-3 fw-bold fs-2">Brilliant Books store</h3>
+            <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+          </div>
+          <div class="col-md-6 item text">
+            <h3 class="mt-0 mb-3 fw-bold fs-2">Careers</h3>
+            <ul class="">
+              <li><a href="./pages//authentication//administratorLogin.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+              <li><a href="./pages//adminDashboard.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
+              <li><a href="./pages//careers//careers.php" class="link-underline link-underline-opacity-0 text-white">Get a job</a></li>
+            </ul>
+          </div>
+          <div class=" col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
+          </div>
         </div>
-        <div class="col-sm-6 col-md-3 item">
-          <h3 class="mt-0 mb-3 fw-bold fs-2">About</h3>
-          <ul>
-            <li><a href=" #" class="link-underline link-underline-opacity-0 text-white">Company</a></li>
-            <li><a href="#" class="link-underline link-underline-opacity-0 text-white">Team</a></li>
-            <li><a href="#" class="link-underline link-underline-opacity-0 text-white">Careers</a></li>
-          </ul>
-        </div>
-        <div class="col-md-6 item text">
-          <h3 class="mt-0 mb-3 fw-bold fs-2">Brilliant Books store</h3>
-          <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
-        </div>
-        <div class="col-md-6 item text">
-          <h3 class="mt-0 mb-3 fw-bold fs-2">Careers</h3>
-          <ul class="">
-            <li><a href="./pages//authentication//administratorLogin.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
-            <li><a href="./pages//adminDashboard.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
-            <li><a href="./pages//careers//careers.php" class="link-underline link-underline-opacity-0 text-white">Get a job</a></li>
-          </ul>
-        </div>
-        <div class=" col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a>
-        </div>
+        <p class="copyright text-align-center pt-4 fs-4 mb-0">Brilliant Book Store © 2023</p>
       </div>
-      <p class="copyright text-align-center pt-4 fs-4 mb-0">Brilliant Book Store © 2023</p>
-    </div>
-  </footer>
+    </footer>
+  </div>
   <script src="./scripts//animations//slideshow_animations.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script/animations/lottie_animations.js"></script>
