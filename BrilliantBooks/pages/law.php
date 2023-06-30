@@ -1,3 +1,10 @@
+<?php
+$con = mysqli_connect('localhost', 'root');
+mysqli_select_db($con, "BrilliantBookstore");
+$sql = "SELECT * FROM tblbooks WHERE type='Law'";
+$featured = $con->query($sql);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -5,101 +12,65 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./category.css">
+  <link rel="stylesheet" href="./styles//styles.css">
+  <link rel="stylesheet" href="./pages//products.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css">
-  <title><?= "Category | Brilliant Books" ?></title>
+  <title><?= "Law | Brilliant Books" ?></title>
 </head>
 
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
-      <img class="d-inline-block align-text-top" src="./../images//images//logo//BRILLIANT.png" width="120" height="90">
+      <img class="d-inline-block align-text-top" src="./images//images//logo//BRILLIANT.png" width="120" height="90">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link" href="./../index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="./category.php">Category</a>
+            <a class="nav-link" href="./pages//category.php">Category</a>
           </li>
           <li class="nav-item d-flex align">
-            <a class="nav-link" href="./about//aboutUs.php">About us</a>
+            <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="./pages//Products.php">Products</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="./pages//cart.php">Cart</a>
           </li>
         </ul>
-        <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/registration.php">
-            Sign up
-          </a>
-        </button>
-        <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/login.php">
-            Sign in
-          </a>
-        </button>
       </div>
     </div>
   </nav>
+  <div class="d-flex flex-column">
+    <h2 class="text-center">Law Books</h2>
+    <div class="d-grid">
+      <div class="d-flex flex-row mx-5 p-2">
+        <?php
+        while ($product = mysqli_fetch_assoc($featured)) :
+        ?>
 
-  <span class="background">
-    <h1 class="d-flex justify-content-center align-items-center text-white">CATEGORY</h1>
-    <section class="gallery">
-      <article class="card">
-        <figure>
-          <img src="./law.jpg" alt="law" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./law.php">Law</a>
+          <div class="card mx-2 g-col-4" style="width: 18rem;">
+            <img src="<?= $product['image']; ?>" alt="<?= $product['book_name']; ?>">
+
+            <h4 class="price"><?= $product['book_name']; ?></h4>
+            <div class="butt d-flex flex-row">
+              <button class="btn price  mx-2">R <?= $product['book_price']; ?></button>
+              <a href="./details.php">
+                <button type="button" class="btn btn-success" data-bs-toggle="modal " data-bs-target="#details-1">More</button>
+              </a>
+            </div>
+
           </div>
-        </figure>
-      </article>
-      <article class="card">
-        <figure>
-          <img src="./technology.jpg" alt="technology" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./technology.php">Technology</a>
-          </div>
-        </figure>
-      </article>
-      <article class="card">
-        <figure>
-          <img src="./medicine.jpg" alt="medicine" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./medicine.php">Medicine</a>
-          </div>
-        </figure>
-      </article>
-      <article class="card">
-        <figure>
-          <img src="./education.jpg" alt="education" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./education.php">Education</a>
-          </div>
-        </figure>
-      </article>
-      <article class="card">
-        <figure>
-          <img src="./philosophy.jpg" alt="philosophy" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./philosophy.php">Philosophy</a>
-          </div>
-        </figure>
-      </article>
-      <article class="card">
-        <figure>
-          <img src="./sport.jpg" alt="sports" srcset="">
-          <div class="d-flex justify-content-center align-items-center">
-            <a href="./sport.php">Sport</a>
-          </div>
-        </figure>
-      </article>
-    </section>
-  </span>
+        <?php endwhile; ?>
+      </div>
+    </div>
+  </div>
 
 
   <footer class="bg-dark d-flex w-100">

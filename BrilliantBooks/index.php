@@ -113,34 +113,36 @@ $featured = $con->query($sql);
       </div>
     </div>
   </div>
-
-
-  <footer class="bg-dark d-flex w-100">
-    <div class="w-20">
-      <img src="./images//images//logo//Brilliant_white.png" alt="" class="w-100">
-    </div>
-    <div class="w-20">
-      <p>Brilliant Books</p>
-      <ul class="">
-        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Home</a></li>
-        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Category</a></li>
-        <li><a href="" class="link-underline link-underline-opacity-0 text-white">About us</a></li>
-        <li><a href="" class="link-underline link-underline-opacity-0 text-white">Cart</a></li>
-      </ul>
-    </div>
-    <div class="w-20">
-      <p>Careers</p>
-      <ul class="">
-        <li><a href="./pages//authentication//administratorLogin.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
-        <li><a href="./pages//adminDashboard.php" class="link-underline link-underline-opacity-0 text-white">Intranet</a></li>
-        <li><a href="./pages//careers//careers.php" class="link-underline link-underline-opacity-0 text-white">Get a job</a></li>
-      </ul>
-    </div>
-    <div class="w-20">
-      <p></p>
-    </div>
-    <div class="w-20"></div>
-  </footer>
+  <div class="footer-dark">
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-sm-6 col-md-3 item">
+            <h3>Services</h3>
+            <ul>
+              <li><a href="#">Web design</a></li>
+              <li><a href="#">Development</a></li>
+              <li><a href="#">Hosting</a></li>
+            </ul>
+          </div>
+          <div class="col-sm-6 col-md-3 item">
+            <h3>About</h3>
+            <ul>
+              <li><a href="#">Company</a></li>
+              <li><a href="#">Team</a></li>
+              <li><a href="#">Careers</a></li>
+            </ul>
+          </div>
+          <div class="col-md-6 item text">
+            <h3>Brilliant Books store</h3>
+            <p>Praesent sed lobortis mi. Suspendisse vel placerat ligula. Vivamus ac sem lacus. Ut vehicula rhoncus elementum. Etiam quis tristique lectus. Aliquam in arcu eget velit pulvinar dictum vel in justo.</p>
+          </div>
+          <div class="col item social"><a href="#"><i class="icon ion-social-facebook"></i></a><a href="#"><i class="icon ion-social-twitter"></i></a><a href="#"><i class="icon ion-social-snapchat"></i></a><a href="#"><i class="icon ion-social-instagram"></i></a></div>
+        </div>
+        <p class="copyright">Brilliant Book Store © 2023</p>
+      </div>
+    </footer>
+  </div>
   <script src="./scripts//animations//slideshow_animations.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script/animations/lottie_animations.js"></script>

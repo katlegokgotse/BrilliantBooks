@@ -17,7 +17,7 @@ $featured = $con->query($sql);
         <p class=""><?= $product['book_description']; ?></p>
         <p>Author: <?= $product['book_author']; ?></p>
         <p>Released: <?= $product['book_year_of_release']; ?></p>
-        <p>Publisher: <?= $product['pulisher_name']; ?></p>
+        <p>Publisher: <?= $product['publisher_name']; ?></p>
 
       </div>
     </div>
