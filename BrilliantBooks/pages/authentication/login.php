@@ -36,6 +36,7 @@ if (isset($_POST["submit"])) {
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="styles/styles.css">
+  <link rel="stylesheet" href="./registration.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css">
   <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
   <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
@@ -46,23 +47,23 @@ if (isset($_POST["submit"])) {
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
-      <img class="d-inline-block align-text-top" src="./../../images/logo/BRILLIANT.png" width="120" height="90">
+      <img class="d-inline-block align-text-top" src="./../../images//images//logo//BRILLIANT.png" width="120" height="90">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="./../../index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link" href="./pages//category.php" aria-current="page">Category</a>
+            <a class="nav-link" href="./../category.php" aria-current="page">Category</a>
           </li>
           <li class="nav-item d-flex align">
-            <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
+            <a class="nav-link" href="./../about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./pages//cart.php">Cart</a>
+            <a class="nav-link" href="./../cart.php">Cart</a>
           </li>
         </ul>
         <button class="navbar-text bg-dark rounded-5 p-2 text-white">

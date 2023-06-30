@@ -1,10 +1,23 @@
 <?php
-$conn = mysqli_connect('localhost', 'root');
-mysqli_select_db($conn, 'BrilliantBookstore');
-$sql = "SELECT * FROM tblbooks";
-$featured = $conn->query($sql);
+@include './Conndb.php';
+if (isset($_POST['update_update_btn'])) {
+  $update_value = $_POST['update_quantity'];
+  $update_id = $_POST['update_quantity_id'];
+  $update_quantity_query = mysqli_query($conn, "UPDATE `cart` SET quantity = '$update_value' WHERE cart_id = '$update_id'");
+  if ($update_quantity_query) {
+    header('location:cart.php');
+  };
+};
+if (isset($_GET['remove'])) {
+  $remove_id = $_GET['remove'];
+  mysqli_query($conn, "DELETE FROM `cart` WHERE cart_id = '$remove_id'");
+  header('location:cart.php');
+};
 
-
+if (isset($_GET['delete_all'])) {
+  mysqli_query($conn, "DELETE FROM `cart`");
+  header('location:cart.php');
+}
 
 ?>
 <!DOCTYPE html>
@@ -23,14 +36,14 @@ $featured = $conn->query($sql);
 <body>
   <nav class="navbar navbar-expand-lg bg-white border-bottom">
     <div class="container-fluid">
-      <img class="d-inline-block align-text-top" src="./images//images//logo//BRILLIANT.png" width="120" height="90">
+      <img class="d-inline-block align-text-top" src="./../images//images//logo//BRILLIANT.png" width="120" height="90">
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="./../index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
             <a class="nav-link" href="./pages//category.php">Category</a>
@@ -70,35 +83,42 @@ $featured = $conn->query($sql);
         <tbody>
           <?php
           $sql = "SELECT * FROM `cart`";
+          $grand_total = 0;
+          $sub_total = 0;
           $select_cart = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($select_cart) > 0) {
+            while ($product = mysqli_fetch_assoc($select_cart)) {
+
           ?>
-          <tr>
-            <td><img src="uploaded_img/<?php echo $fetch_cart['image']; ?>" height="100" alt=""></td>
-            <td><?php echo $product['name']; ?></td>
-            <td>$<?= number_format($productt['price']); ?>/-</td>
-            <td>
-              <form action="" method="post">
-                <input type="hidden" name="update_quantity_id" value="<?= $product['id']; ?>">
-                <input type="number" name="update_quantity" min="1" value="<?= $product['quantity']; ?>">
-                <input type="submit" value="update" name="update_update_btn">
-              </form>
-            </td>
-            <td>R<?= $sub_total = number_format($product['price'] * $product['quantity']); ?>/-</td>
-            <td><a href="cart.php?remove=<?= $product['id']; ?>" onclick="return confirm('remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
-          </tr>
+              <tr>
+                <td><img src="uploaded_img/<?= $product['image']; ?>" height="100" alt=""></td>
+                <td><?php echo $product['name']; ?></td>
+                <td>R<?= number_format($product['price']); ?></td>
+                <td>
+                  <form action="" method="post">
+                    <input type="hidden" name="update_quantity_id" value=<?= $product['cart_id']; ?>>
+                    <input type="number" name="update_quantity" min="1" value="<?= $product['quantity']; ?>">
+                    <input type="submit" value="update" name="update_update_btn">
+                  </form>
+                </td>
+                <td>R<?= $sub_total = number_format($product['price'] * $product['quantity']); ?></td>
+                <td><a href="cart.php?remove=<?= $product['id']; ?>" onclick="return confirm('remove item from cart?')" class="delete-btn"> <i class="fas fa-trash"></i> remove</a></td>
+              </tr>
           <?php
-          $grand_total += $sub_total;
+              $grand_total += $sub_total;
+            };
+          };
           ?>
           <tr class="table-bottom">
             <td><a href="products.php" class="option-btn" style="margin-top: 0;">continue shopping</a></td>
             <td colspan="3">grand total</td>
-            <td>R<?= $grand_total; ?>/-</td>
+            <td>R<?= $grand_total; ?></td>
             <td><a href="cart.php?delete_all" onclick="return confirm('are you sure you want to delete all?');" class="delete-btn"> <i class="fas fa-trash"></i> delete all </a></td>
           </tr>
         </tbody>
       </table>
       <div class="checkout-btn">
-        <a href="checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">procced to checkout</a>
+        <a href="./checkout.php" class="btn <?= ($grand_total > 1) ? '' : 'disabled'; ?>">procced to checkout</a>
       </div>
     </section>
   </div>

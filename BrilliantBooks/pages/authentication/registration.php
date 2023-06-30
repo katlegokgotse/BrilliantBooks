@@ -21,21 +21,28 @@
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav nav-underline me-auto mb-2 mb-lg-0r justify-content-center">
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link active" aria-current="page" href="./index.php">Home</a>
+            <a class="nav-link active" aria-current="page" href="./../../index.php">Home</a>
           </li>
           <li class="nav-item d-flex justify-content-center">
-            <a class="nav-link" href="./pages//category.php">Category</a>
+            <a class="nav-link" href="./../category.php">Category</a>
           </li>
           <li class="nav-item d-flex align">
-            <a class="nav-link" href="./pages//about//aboutUs.php">About us</a>
+            <a class="nav-link" href="./../about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="./pages//cart.php">Cart</a>
+            <a class="nav-link" href="./../cart.php">Cart</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+  <?php
+  if (isset($errors)) {
+    foreach ($errors as $errors) {
+      print '<div class="message" onclick="this.remove();">' . $errors . '</div>';
+    }
+  }
+  ?>
   <article>
     <div class="position-relative overflow-hidden py-24 sm:py-32 p-5">
       <div class="d-flex justify-content-center w-100 mx-auto max-w-7xl px-6 lg:px-8 md:d-inline-grid">
@@ -79,13 +86,14 @@
       </div>
     </div>
   </article>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="./../../scripts//authentication//authentication.js"></script>
 
   <?php
   //Recieving user input
   include('./../Conndb.php');
-  if (isset($_POST["submit"])) {
+  if (isset($_POST['submit'])) {
     $name = mysqli_real_escape_string($conn, $_POST["userRegistrationName"]);
     $surname = mysqli_real_escape_string($conn, $_POST["userRegistrationSurname"]);
     $studentNumber =  mysqli_real_escape_string($conn, $_POST["universityStudentNumber"]);
@@ -93,7 +101,9 @@
     $password = mysqli_real_escape_string($conn, $_POST["password"]);
     $confirmPassword = mysqli_real_escape_string($conn, $_POST["confirmPassword"]);
     $university = mysqli_real_escape_string($conn, $_POST["universityName"]);
-
+    $user_type = "user";
+    $select = mysqli_query($conn, "SELECT * FROM `tbluser` WHERE email = '$email' AND password = '$password'")
+      or die('query failed');
     $errors = [];
     $passwordHash = password_hash($password, PASSWORD_DEFAULT);
 
@@ -109,13 +119,18 @@
     if ($password !== $confirmPassword) {
       array_push($errors, "The passwords do not match");
     }
+    if (mysqli_num_rows($select) > 0) {
+      array_push($errors, "User already has an account");
+    }
     if (count($errors) > 0) {
       foreach ($errors as $error) {
         print "<div class='alert alert-danger'>$error</div>";
       }
     } else {
       //
-      $sql = "INSERT INTO tbluser (first_name, last_name, email, student_number, university, password) VALUES ('$name', '$surname', '$email', $studentNumber,'$university', $password)";
+      $sql = "INSERT INTO tbluser (first_name, last_name, email, student_number, university, password, user_type) 
+        VALUES ('$name', '$surname', '$email', $studentNumber,'$university', '$password', '$user_type')";
+      array_push($errors, "Registration successful");
       try {
         $result = mysqli_query($conn, $sql);
         session_start();
@@ -128,7 +143,6 @@
           header("Refresh:0");
         }
         print "<div class='alert alert-success'>You have been registered successfully</div>";
-        header("location:./index.php");
       } catch (mysqli_sql_exception) {
         print "<div class='alert alert-warning'>Something went wrong!</div>";
       }
