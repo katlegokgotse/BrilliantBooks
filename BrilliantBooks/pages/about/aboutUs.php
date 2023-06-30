@@ -30,19 +30,9 @@
             <a class="nav-link active" aria-current="page" href="./pages//about//aboutUs.php">About us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Cart</a>
+            <a class="nav-link" href="./../cart.php">Cart</a>
           </li>
         </ul>
-        <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/registration.php">
-            Sign up
-          </a>
-        </button>
-        <button id="signUpButton" class="bg-dark rounded-5 p-2 text-white">
-          <a href="pages/authentication/registration.php">
-            Sign in
-          </a>
-        </button>
       </div>
     </div>
   </nav>
